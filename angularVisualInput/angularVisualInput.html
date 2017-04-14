@@ -1,0 +1,23 @@
+<div class="angular-visual-input">
+  <div text-angular
+       id="{{'editor' + editorId}}"
+       name="{{'editor' + editorId}}"
+       ng-model="textView"
+       ta-paste="stripFormat($html)"></div>
+  <span class="label-add-container"
+        ng-mouseover="saveCursor()"
+        data-ng-click="isOpened = !isOpened">
+    <i class="label-add-icon fa fa-plus-circle" aria-hidden="true"></i>
+  </span>
+  <div style="position: relative">
+    <ul class="select-list animate-show"
+        data-ng-show="isOpened">
+      <input class="select-search" type="text" ng-model="filterText">
+      <li class="select-list-item"
+          data-ng-repeat="(key, val) in variables | filterByName:filterText"
+          data-ng-click="select(key)">
+        <img ng-src={{val.iconSrc}}>
+        <span class="item-title" data-key={{key}}>{{val.name}}</span></li>
+    </ul>
+  </div>
+</div>
